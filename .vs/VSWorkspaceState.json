@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Chatbot",
+    "\\Chatbot\\Chatbot"
   ],
+  "SelectedNode": "\\Chatbot\\Chatbot\\Chatbot.csproj",
   "PreviewInSolutionExplorer": false
 }

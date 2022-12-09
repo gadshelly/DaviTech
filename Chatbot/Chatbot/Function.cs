@@ -11,31 +11,41 @@ namespace Chatbot
         private bool TellingName = false;
 
         public bool UserKnowsName = false;
-        public bool KnowsName = false;
         public string UserName = "";
-        public string Answer(string upperText)
+        public bool KnowsName => !string.IsNullOrEmpty(UserName);
+        public string Answer(string unmodifiedText)
         {
-            upperText = upperText.Trim();
-            string text = upperText;
-            text = text.ToLower();
-            int index = 0;
-            foreach(char c in text)
+            unmodifiedText = unmodifiedText.Trim();
+            string unlistedText = unmodifiedText;
+            unlistedText = unlistedText.ToLower();
+            //for(int i = 0; i < unlistedText.Length; i++)
+            //{
+            //    if(!char.IsLetterOrDigit(unlistedText[i]))
+            //    {
+            //        unlistedText = unlistedText.Replace(unlistedText[i], ' ');
+            //    }
+            //}
+
+            for (int i = 0; i < unlistedText.Length; i++)
             {
-                if(!char.IsLetterOrDigit(c))
+                if (!char.IsLetterOrDigit(unlistedText[i]))
                 {
-                    if(index + 1 != text.Length)
-                    {
-                        if (text[index + 1] != ' ') text.Replace(c, ' ');
-                        else text.Replace(c, '\0');
-                    }
-                    else text.Replace(c, '\0');
+                    unlistedText.Replace(unlistedText[i], ' ');
                 }
-                index++;
             }
-            if (text.StartsWith("//")) return "Why did you write a comment? What are you trying to hide from me?";
-            if (text.EndsWith("!!!") || text.ToUpper() == upperText) return "No need to yell, I understand you just fine.";
-            if (text == "hi" || text == "hello") return "Hello";
-            if (text.EndsWith("s your name") || text.EndsWith("s your name?"))
+
+            string[] textArr = unlistedText.Split(' ');
+            List<string> text = new List<string>();
+
+            for (int i = 0; i < textArr.Length; i++)
+            {
+                text.Add(textArr[i]);
+            }
+
+            if (unlistedText.StartsWith("//")) return "Why did you write a comment? What are you trying to hide from me?";
+            if (unlistedText.EndsWith("!!!") || unlistedText.ToUpper() == unmodifiedText) return "No need to yell, I understand you just fine.";
+            if (unlistedText == "hi" || unlistedText == "hello") return "Hello";
+            if (unlistedText.EndsWith("s your name") || unlistedText.EndsWith("s your name?"))
             {
                 if (!KnowsName)
                 {
@@ -45,16 +55,15 @@ namespace Chatbot
                 }
                 else return "My name is Megabyte.";
             }
-            if(TellingName || text.StartsWith("my name is ") || text.StartsWith("my name s "))
+            if(TellingName || unlistedText.StartsWith("my name is ") || unlistedText.StartsWith("my name s "))
             {
-                text = text.Replace("?", "");
-                text = text.Replace("my name is ", "");
-                text = text.Replace("my name s ", "");
-                text = text.Replace(",what is yours", "");
-                text = text.Replace(",what s yours", "");
-                UserName = text;
+                unlistedText = unlistedText.Replace("?", "");
+                unlistedText = unlistedText.Replace("my name is ", "");
+                unlistedText = unlistedText.Replace("my name s ", "");
+                unlistedText = unlistedText.Replace(",what is yours", "");
+                unlistedText = unlistedText.Replace(",what s yours", "");
+                UserName = unlistedText;
                 UserName.Replace(UserName[0], Char.ToUpper(UserName[0]));
-                KnowsName = true;
                 if (TellingName)
                 {
                     TellingName = false;
@@ -66,7 +75,7 @@ namespace Chatbot
                     return "Nice to meet you, " + UserName + ", My name is Megabyte.";
                 }
             }
-            if (text.StartsWith("thanks") || text.StartsWith("thank you")) return "Your welcome.";
+            if (unlistedText.StartsWith("thanks") || unlistedText.StartsWith("thank you")) return "Your welcome.";
             return "I don't understand you.";
         }
     }
