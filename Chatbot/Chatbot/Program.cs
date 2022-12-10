@@ -1,10 +1,10 @@
 ﻿using Chatbot;
-Function func = new Function();
 string userInput;
+Conversation conversation = new Conversation();
 while (true)
 {
-    Console.Write(func.KnowsName ? func.UserName + ": " : "You: ");
+    Console.Write("You: ");
     userInput = Console.ReadLine();
-    Console.Write(func.UserKnowsName ? "Megabyte: " : "Chatbot: ");
-    Console.WriteLine(func.Answer(userInput) + "\n");
+    Console.Write("Megabyte: ");
+    Console.WriteLine(conversation.Answer(userInput) + "\n");
 }
