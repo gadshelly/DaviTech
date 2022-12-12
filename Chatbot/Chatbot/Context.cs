@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Chatbot
 
 namespace Chatbot
 {
-    internal class Context
+    public class Context
     {
         public List<string> Words;
-        public string Text;
+        public string OriginalText;
+        public string CleanText;
         public bool IsQuestion = false;
         public bool TellingName = false;
         public enum DataType { 

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Chatbot
 
 namespace Chatbot
 {
     public class Conversation
     {
-
         public bool UserKnowsName = false;
         public string UserName = "";
         public bool KnowsName => !string.IsNullOrEmpty(UserName);
@@ -17,6 +17,7 @@ namespace Chatbot
         {
             Context ret = new Context();
 
+            ret.UnmodifiedText = unmodifiedText;
             string lowerText = unmodifiedText.Trim().ToLower();
             char[] chars = lowerText.ToCharArray();
             for (int i = 0; i < chars.Length; i++)
@@ -36,11 +37,9 @@ namespace Chatbot
 
             return ret;
         }
-        public string Answer(string text)
-        {
-            List<string> words = new List<string>((IEnumerable<string>)text.Split(' ', StringSplitOptions.RemoveEmptyEntries));
-
-
+        public string Answer(Context context)
+        { 
+            return "I don't understand you.";
             //if (text.StartsWith("//")) return "Why did you write a comment? What are you trying to hide from me?";
             //if (text == "hi" || text == "hello") return "Hello";
             //if (text.EndsWith("s your name") || text.EndsWith("s your name?"))
@@ -74,7 +73,11 @@ namespace Chatbot
             //    }
             //}
             //if (text.StartsWith("thanks") || text.StartsWith("thank you")) return "Your welcome.";
-            return "I don't understand you.";
+        }
+        public string Respond(string text)
+        {
+            Context context = Parse(text);
+            return Answer(context);
         }
     }
 }
