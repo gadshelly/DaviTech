@@ -28,7 +28,7 @@ namespace Chatbot
             }
             string cleanText = new string(chars);
 
-            if(cleanText.StartsWith("my name s") || cleanText.StartsWith("my name is "))
+            if (cleanText.StartsWith("my name s") || cleanText.StartsWith("my name is ")) ret.TellingName = true;
 
             ret.CleanText = cleanText;
 
@@ -40,6 +40,13 @@ namespace Chatbot
         }
         public string Answer(Context context)
         { 
+            if(context.CleanText == "t")
+            {
+                Tester tester = new Tester();
+                
+
+
+            }
             return "What?";
             //if (text.StartsWith("//")) return "Why did you write a comment? What are you trying to hide from me?";
             //if (text == "hi" || text == "hello") return "Hello";

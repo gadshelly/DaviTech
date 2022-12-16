@@ -14,17 +14,12 @@ namespace Chatbot
         public string CleanText = "";
         public bool IsQuestion = false;
         public bool TellingName = false;
-
-        public enum DataType { 
-                None,
-                FirstName, 
-                LastName, 
-                FullName,
-                Age, 
-                Country,
-                City,
-                Street,
-                HouseNum
-        };
+        public override string ToString()
+        {
+            return $"Original Text: {OriginalText}\n" +
+                $"Clean Text: {CleanText}\n" +
+                $"Is Question: {IsQuestion}\n" +
+                $"Telling Name: {TellingName}\n";
+        }
     }
 }
