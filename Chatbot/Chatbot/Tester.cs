@@ -16,10 +16,18 @@ namespace Chatbot
         public string TestArr(TestPackage[] packages)
         {
             string ret = "";
+            Context output = new Context();
             for(int i = 0; i < packages.Length; i++)
             {
-                ret += $"Test Number {i}: \nInput: {packages[i].Input}";
+                output = Conversation.Parse(packages[i].Input);
+                ret += $"\nTest Number {i}:" +
+                    $" \nInput: {packages[i].Input}" +
+                    $"\nExpected Output: {packages[i].ExpectedOutput}" +
+                    $"\nOutput: {output}" +
+                    $"\nTest Result: {output == packages[i].ExpectedOutput}" +
+                    $"\n-------------------\n";
             }
+            return ret;
         }
     }
 

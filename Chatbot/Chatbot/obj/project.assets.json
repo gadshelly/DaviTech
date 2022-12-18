@@ -8,7 +8,7 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\gadys\\.nuget\\packages\\": {},
+    "C:\\Users\\Gad\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -17,14 +17,14 @@
       "projectUniqueName": "C:\\Projects\\gadshelly\\DaviTech\\Chatbot\\Chatbot\\Chatbot.csproj",
       "projectName": "Chatbot",
       "projectPath": "C:\\Projects\\gadshelly\\DaviTech\\Chatbot\\Chatbot\\Chatbot.csproj",
-      "packagesPath": "C:\\Users\\gadys\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\Gad\\.nuget\\packages\\",
       "outputPath": "C:\\Projects\\gadshelly\\DaviTech\\Chatbot\\Chatbot\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\gadys\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Gad\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -67,7 +67,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

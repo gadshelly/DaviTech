@@ -9,6 +9,7 @@ namespace Chatbot
 {
     public class Conversation
     {
+        private string[] InputArr = { "Hi", "WhaT's yOuR NAme?",  };
         public string UserName = "";
         public bool KnowsName => !string.IsNullOrEmpty(UserName);
 
@@ -43,7 +44,7 @@ namespace Chatbot
             if(context.CleanText == "t")
             {
                 Tester tester = new Tester();
-                
+                return "";
 
 
             }
