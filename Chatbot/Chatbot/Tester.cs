@@ -20,10 +20,10 @@ namespace Chatbot
             for(int i = 0; i < packages.Length; i++)
             {
                 output = Conversation.Parse(packages[i].Input);
-                ret += $"\nTest Number {i}:" +
-                    $" \nInput: {packages[i].Input}" +
-                    $"\nExpected Output: {packages[i].ExpectedOutput}" +
-                    $"\nOutput: {output}" +
+                ret += $"\nTest Number {i + 1}: \n" +
+                    $" \nInput: {packages[i].Input}\n" +
+                    $"\nExpected Output: \n{packages[i].ExpectedOutput}\n" +
+                    $"\nOutput: \n{output}\n\n" +
                     $"\nTest Result: {output == packages[i].ExpectedOutput}" +
                     $"\n-------------------\n";
             }

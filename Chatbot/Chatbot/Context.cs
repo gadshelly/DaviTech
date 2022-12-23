@@ -14,6 +14,16 @@ namespace Chatbot
         public string CleanText = "";
         public bool IsQuestion = false;
         public bool TellingName = false;
+        public Context() { }
+        public Context(List<string> words, string originalText, string cleanText, bool isQuestion, bool tellingName)
+        {
+            Words = words;
+            OriginalText = originalText;
+            CleanText = cleanText;
+            IsQuestion = isQuestion;
+            TellingName = tellingName;
+        }
+
         public override string ToString()
         {
             return $"Original Text: {OriginalText}\n" +

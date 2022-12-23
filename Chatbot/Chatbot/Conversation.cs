@@ -31,7 +31,8 @@ namespace Chatbot
             }
             string cleanText = new string(chars);
 
-            if (cleanText.StartsWith("my name s") || cleanText.StartsWith("my name is ")) ret.TellingName = true;
+            if (cleanText.StartsWith("my name s")
+                || cleanText.StartsWith("my name is ")) ret.TellingName = true;
 
             ret.CleanText = cleanText;
 
@@ -49,7 +50,7 @@ namespace Chatbot
             if(context.CleanText == "t")
             {
                 string[] file = File.ReadAllText(
-                    @"C:\Projects\gadshelly\DaviTech\Chatbot\Chatbot\TestPackageArr.txt").Split('\n');
+                    @"C:\Projects\gadshelly\DaviTech\Chatbot\Chatbot\TestPackageArr.txt").Split("\r\n");
                 int length = int.Parse(file[0]);
                 TestPackage[] packages = new TestPackage[length];
 
@@ -57,11 +58,13 @@ namespace Chatbot
                 Context expectedOutput = new Context();
                 string[] contextFields;
 
-                for (int i = 1; i < length; i++)
+                for (int i = 1; i <= length; i++)
                 {
-                    input = file[i - 1].Split("//")[0];
-                    contextFields = file[i - 1].Split("//")[1].Split(',');
-                    expectedOutput = new Context(new List<string>(contextFields[1].Split('+')), );
+                    input = file[i].Split("//")[0];
+                    contextFields = file[i].Split("//")[1].Split(',');
+                    expectedOutput = new Context(new List<string>(contextFields[0].Split('+'))
+                        , contextFields[1], contextFields[2], Convert.ToBoolean(int.Parse(contextFields[3]))
+                        , Convert.ToBoolean(int.Parse(contextFields[4])));
 
                     packages[i - 1] = new TestPackage(input, expectedOutput);
                 }
@@ -69,7 +72,7 @@ namespace Chatbot
                 Tester tester = new Tester();
                 return tester.TestArr(packages);
             }
-            return "What?";
+            return "AMOGUS?";
             //if (text.StartsWith("//")) return "Why did you write a comment?";
             //if (text == "hi" || text == "hello") return "Hello";
             //if (text.EndsWith("s your name") || text.EndsWith("s your name?"))
