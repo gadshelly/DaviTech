@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Chatbot;
+using System.IO;
+using System.Text;
 
 namespace Chatbot
 {
@@ -33,7 +35,10 @@ namespace Chatbot
 
             ret.CleanText = cleanText;
 
-            if (lowerText.EndsWith('?')) ret.IsQuestion = true;
+            if (lowerText.StartsWith("what") || lowerText.StartsWith("where") || lowerText.StartsWith("why") 
+                || lowerText.StartsWith("who") || lowerText.StartsWith("is") || lowerText.StartsWith("am")
+                || lowerText.StartsWith("are") || lowerText.StartsWith("do") || lowerText.StartsWith("does")
+                || lowerText.StartsWith("did") || lowerText.EndsWith('?')) ret.IsQuestion = true;
 
             ret.Words = new List<string>(cleanText.Split(' ', StringSplitOptions.RemoveEmptyEntries));
 
@@ -43,13 +48,29 @@ namespace Chatbot
         { 
             if(context.CleanText == "t")
             {
+                string[] file = File.ReadAllText(
+                    @"C:\Projects\gadshelly\DaviTech\Chatbot\Chatbot\TestPackageArr.txt").Split('\n');
+                int length = int.Parse(file[0]);
+                TestPackage[] packages = new TestPackage[length];
+
+                string input;
+                Context expectedOutput = new Context();
+                string[] contextFields;
+
+                for (int i = 1; i < length; i++)
+                {
+                    input = file[i - 1].Split("//")[0];
+                    contextFields = file[i - 1].Split("//")[1].Split(',');
+                    expectedOutput = new Context(new List<string>(contextFields[1].Split('+')), );
+
+                    packages[i - 1] = new TestPackage(input, expectedOutput);
+                }
+
                 Tester tester = new Tester();
-                return "";
-
-
+                return tester.TestArr(packages);
             }
             return "What?";
-            //if (text.StartsWith("//")) return "Why did you write a comment? What are you trying to hide from me?";
+            //if (text.StartsWith("//")) return "Why did you write a comment?";
             //if (text == "hi" || text == "hello") return "Hello";
             //if (text.EndsWith("s your name") || text.EndsWith("s your name?"))
             //{

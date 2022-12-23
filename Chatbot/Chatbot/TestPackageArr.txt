@@ -1,0 +1,13 @@
+﻿4
+Hi//hi,Hi,hi,false,false
+heLlO//hello,heLlO,hello,false,false
+whAt's yoUR nAMe?//what+s+your+name,whAt's yoUR nAMe?,what s your name,true,false
+my NAME iS Shlomo//my+name+is+shlomo,my NAME iS Shlomo,my name is shlomo,false,true
+is YouR nAMe Yosi//is+your+name+yosi,is YouR nAMe Yosi,is your name yosi,true,false
+
+%%%        SYMBOL KEY
+%%% first line --------- LENGTH
+%%% %%% --------------- COMMENT
+%%% // -------- EXPECTED OUTPUT
+%%% , ----- FEILDS OF "CONTEXT"
+%%% + --- PARTS OF "WORDS" LIST
