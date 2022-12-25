@@ -30,16 +30,20 @@ namespace Chatbot
                 }
             }
             string cleanText = new string(chars);
+            cleanText = cleanText.Trim();
 
             if (cleanText.StartsWith("my name s")
                 || cleanText.StartsWith("my name is ")) ret.TellingName = true;
 
             ret.CleanText = cleanText;
 
-            if (lowerText.StartsWith("what") || lowerText.StartsWith("where") || lowerText.StartsWith("why") 
-                || lowerText.StartsWith("who") || lowerText.StartsWith("is") || lowerText.StartsWith("am")
-                || lowerText.StartsWith("are") || lowerText.StartsWith("do") || lowerText.StartsWith("does")
-                || lowerText.StartsWith("did") || lowerText.EndsWith('?')) ret.IsQuestion = true;
+            if (lowerText.StartsWith("what ") || lowerText.StartsWith("where ") || lowerText.StartsWith("why ") 
+                || lowerText.StartsWith("who ") || lowerText.StartsWith("is ") || lowerText.StartsWith("am ")
+                || lowerText.StartsWith("are ") || lowerText.StartsWith("do ") || lowerText.StartsWith("does ")
+                || lowerText.StartsWith("did ") || lowerText.StartsWith("can ") || lowerText.StartsWith("was ")
+                || lowerText.StartsWith("were ") || lowerText.StartsWith("will ") || lowerText.StartsWith("won ")
+                || lowerText.StartsWith("whose ") || lowerText.StartsWith("had ") || lowerText.StartsWith("whose ")
+                || lowerText.EndsWith('?')) ret.IsQuestion = true;
 
             ret.Words = new List<string>(cleanText.Split(' ', StringSplitOptions.RemoveEmptyEntries));
 
@@ -47,7 +51,7 @@ namespace Chatbot
         }
         public string Answer(Context context)
         { 
-            if(context.CleanText == "t")
+            if(context.CleanText == "test")
             {
                 string[] file = File.ReadAllText(
                     @"C:\Projects\gadshelly\DaviTech\Chatbot\Chatbot\TestPackageArr.txt").Split("\r\n");
@@ -72,7 +76,28 @@ namespace Chatbot
                 Tester tester = new Tester();
                 return tester.TestArr(packages);
             }
-            return "AMOGUS?";
+
+            if(context.CleanText == "qtest")
+            {
+                string[] file = File.ReadAllText(
+    @"C:\Projects\gadshelly\DaviTech\Chatbot\Chatbot\Questions.txt").Split("\r\n");
+                int length = int.Parse(file[0]);
+                QuestionTestPackage[] packages = new QuestionTestPackage[length];
+
+                for (int i = 1; i <= length; i++)
+                {
+                    packages[i - 1] = new QuestionTestPackage(file[i], true);
+                }
+
+                QuestionTester tester = new QuestionTester();
+                return tester.TestArr(packages);
+            }
+
+            if (context.CleanText == "quit") return "NOT AMOGUS:(";
+
+            if (context.IsQuestion) return "Question detected. ";
+
+            return "No question detected. ";
             //if (text.StartsWith("//")) return "Why did you write a comment?";
             //if (text == "hi" || text == "hello") return "Hello";
             //if (text.EndsWith("s your name") || text.EndsWith("s your name?"))
