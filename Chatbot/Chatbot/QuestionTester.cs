@@ -16,16 +16,19 @@ namespace Chatbot
         {
             string ret = "";
             Context output = new Context();
+            int success = 0;
             for (int i = 0; i < packages.Length; i++)
             {
                 output = Conversation.Parse(packages[i].Input);
                 ret += $"\n\nTest Number {i + 1}: \n" +
                     $" \nInput: {packages[i].Input}\n" +
                     $"\nExpected Output: \n{packages[i].ExpectedOutput}\n" +
-                    $"\nOutput: \n{output}\n\n" +
+                    $"\nOutput: \n{output.IsQuestion}\n\n" +
                     $"\nTest Result: {Test(packages[i])}" +
                     $"\n-------------------\n";
+                if (Test(packages[i])) success++;
             }
+            ret += $"Tests Passed: {success}";
             return ret;
         }
     }

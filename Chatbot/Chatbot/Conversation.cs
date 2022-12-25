@@ -37,12 +37,13 @@ namespace Chatbot
 
             ret.CleanText = cleanText;
 
-            if (lowerText.StartsWith("what ") || lowerText.StartsWith("where ") || lowerText.StartsWith("why ") 
+            if (lowerText.StartsWith("what") || lowerText.StartsWith("where ") || lowerText.StartsWith("why ") 
                 || lowerText.StartsWith("who ") || lowerText.StartsWith("is ") || lowerText.StartsWith("am ")
                 || lowerText.StartsWith("are ") || lowerText.StartsWith("do ") || lowerText.StartsWith("does ")
                 || lowerText.StartsWith("did ") || lowerText.StartsWith("can ") || lowerText.StartsWith("was ")
                 || lowerText.StartsWith("were ") || lowerText.StartsWith("will ") || lowerText.StartsWith("won ")
                 || lowerText.StartsWith("whose ") || lowerText.StartsWith("had ") || lowerText.StartsWith("whose ")
+                || lowerText.StartsWith("have ") || lowerText.StartsWith("when ") || lowerText.StartsWith("how")
                 || lowerText.EndsWith('?')) ret.IsQuestion = true;
 
             ret.Words = new List<string>(cleanText.Split(' ', StringSplitOptions.RemoveEmptyEntries));

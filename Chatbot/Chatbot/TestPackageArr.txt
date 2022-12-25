@@ -1,48 +1,13 @@
-﻿43
-WHAT DO YOU DO
-ARE YOU MARRIED
-WHY ARE YOU STUDYING ENGLISH
-HOW DID YOU LEARN ENGLISH
-WHAT DO YOU DO IN YOUR FREE TIME
-HOW’S THE WEATHER
-WHAT TIME IS IT
-CAN I HELP YOU
-HOW’S IT GOING
-HOW ARE YOU FEELING
-HOW WAS YOUR DAY
-DID YOU LIKE THE MOVIE
-HOW WAS THE PARTY
-CAN YOU GIVE ME A HAND
-WHAT HAVE YOU BEEN UP TO LATELY
-WHAT’S THE MATTER
-WHAT WOULD YOU LIKE TO DRINK
-ARE YOU READY TO ORDER
-IS EVERYTHING OK
-CAN I GET YOU ANYTHING ELSE
-What is Your Name
-Where Are You From
-Where Do You Live
-Do You Speak English
-How Long Have You Been Studying English
-Where Did You Learn English
-Can You Play Musical Instruments
-Do You Like American Food
-How Is The American Food
-How Old Are You
-When Is Your Birthday
-Do You Have Any Brothers Or Sisters
-How Tall Are You
-Do You Have A Cellphone
-How Are You
-What Are You Doing
-What's Wrong
-What's The Weather Like
-Are You Hungry
-What Is This
-Whose Is This
-Have You Been To Los Angeles
-How Much Is This
+﻿5
+Hi//hi,Hi,hi,0,0
+heLlO//hello,heLlO,hello,0,0
+whAt's yoUR nAMe?//what+s+your+name,whAt's yoUR nAMe?,what s your name,1,0
+my NAME iS Shlomo//my+name+is+shlomo,my NAME iS Shlomo,my name is shlomo,0,1
+is YouR nAMe Yosi//is+your+name+yosi,is YouR nAMe Yosi,is your name yosi,1,0
 
 %%%        SYMBOL KEY
 %%% first line --------- LENGTH
 %%% %%% --------------- COMMENT
+%%% // -------- EXPECTED OUTPUT
+%%% , ----- FEILDS OF "CONTEXT"
+%%% + --- PARTS OF "WORDS" LIST
