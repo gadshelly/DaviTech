@@ -8,14 +8,14 @@ using System.Runtime.CompilerServices;
 
 string userInput;
 string response;
-Conversation conversation = new Conversation();
+Conversation_HEBREW conversation = new Conversation_HEBREW();
 while (true)
 {
     Console.Write("You: ");
     userInput = Console.ReadLine();
     Console.Write("Megabyte: ");
     response = conversation.Respond(userInput) + '\n';
-    if (response == "NOT AMOGUS:(\n")
+    if (response == "quit\n")
     {
         Console.WriteLine("Quiting...\n\n");
         Environment.Exit(0);
@@ -27,4 +27,4 @@ void TEST()
 {
     EnglishTreebankParser parser = new EnglishTreebankParser("test");
     Parse parsed = parser.DoParse("this is just a test");
-}
+    }

@@ -11,7 +11,6 @@ namespace Chatbot
 {
     public class Conversation
     {
-        private string[] InputArr = { "Hi", "WhaT's yOuR NAme?",  };
         public string UserName = "";
         public bool KnowsName => !string.IsNullOrEmpty(UserName);
 
@@ -55,7 +54,7 @@ namespace Chatbot
             if(context.CleanText == "test")
             {
                 string[] file = File.ReadAllText(
-                    @"C:\Projects\gadshelly\DaviTech\Chatbot\Chatbot\TestPackageArr.txt").Split("\r\n");
+                    @"C:\Projects\gadshelly\DaviTech\Chatbot\Chatbot\SentencesTest.txt").Split("\r\n");
                 int length = int.Parse(file[0]);
                 TestPackage[] packages = new TestPackage[length];
 
@@ -81,7 +80,7 @@ namespace Chatbot
             if(context.CleanText == "qtest")
             {
                 string[] file = File.ReadAllText(
-    @"C:\Projects\gadshelly\DaviTech\Chatbot\Chatbot\Questions.txt").Split("\r\n");
+    @"C:\Projects\gadshelly\DaviTech\Chatbot\Chatbot\QuestionsTest.txt").Split("\r\n");
                 int length = int.Parse(file[0]);
                 QuestionTestPackage[] packages = new QuestionTestPackage[length];
 
@@ -94,7 +93,7 @@ namespace Chatbot
                 return tester.TestArr(packages);
             }
 
-            if (context.CleanText == "quit") return "NOT AMOGUS:(";
+            if (context.CleanText == "quit") return "quit";
 
             if (context.IsQuestion) return "Question detected. ";
 
