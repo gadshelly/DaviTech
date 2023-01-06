@@ -24,7 +24,7 @@ namespace Chatbot
                     $" \nInput: {packages[i].Input}\n" +
                     $"\nExpected Output: \n{packages[i].ExpectedOutput}\n" +
                     $"\nOutput: \n{output}\n\n" +
-                    $"\nTest Result: {output.ToString() == packages[i].ExpectedOutput.ToString()}" +
+                    $"\nTest Result: {(output.ToString() == packages[i].ExpectedOutput.ToString() ? "passed" : "failed")}" +
                     $"\n-------------------\n";
             }
             return ret;

@@ -12,18 +12,18 @@ namespace Chatbot.Hebrew
         {
             return package.ExpectedOutput == Conversation.Parse(package.Input);
         }
-        public string TestArr(TestPackage[] packages)
+        public string TestArr(TestPackage_HEBREW[] packages)
         {
             string ret = "";
             Context output = new Context();
             for (int i = 0; i < packages.Length; i++)
             {
-                output = Conversation.Parse(packages[i].Input);
-                ret += $"\n\nTest Number {i + 1}: \n" +
-                    $" \nInput: {packages[i].Input}\n" +
-                    $"\nExpected Output: \n{packages[i].ExpectedOutput}\n" +
-                    $"\nOutput: \n{output}\n\n" +
-                    $"\nTest Result: {output.ToString() == packages[i].ExpectedOutput.ToString()}" +
+                output = Conversation_HEBREW.Parse(packages[i].Input);
+                ret += $"\n\nבדיקה מספר {i + 1}: \n" +
+                    $" \nקלט: {packages[i].Input}\n" +
+                    $"\nפלט מצופה: \n{packages[i].ExpectedOutput}\n" +
+                    $"\nפלט: \n{output}\n\n" +
+                    $"\nתוצאת בדיקה: {(output.ToString() == packages[i].ExpectedOutput.ToString() ? "עבר" : "נכשל")}" +
                     $"\n-------------------\n";
             }
             return ret;
@@ -41,7 +41,7 @@ namespace Chatbot.Hebrew
         public TestPackage_HEBREW() { }
         public override string ToString()
         {
-            return $"ערך מועבר: {Input}\nערך יציאה מצופה: {ExpectedOutput.ToString()}";
+            return $"קלט: {Input}\nפלט מצופה: {ExpectedOutput.ToString()}";
         }
     }
 }

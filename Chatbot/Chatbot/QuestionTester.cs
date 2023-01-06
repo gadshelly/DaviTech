@@ -24,7 +24,7 @@ namespace Chatbot
                     $" \nInput: {packages[i].Input}\n" +
                     $"\nExpected Output: \n{packages[i].ExpectedOutput}\n" +
                     $"\nOutput: \n{output.IsQuestion}\n\n" +
-                    $"\nTest Result: {Test(packages[i])}" +
+                    $"\nTest Result: {(Test(packages[i]) ? "passed" : "failed")}" +
                     $"\n-------------------\n";
                 if (Test(packages[i])) success++;
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chatbot.Hebrew;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,7 +39,8 @@ namespace Chatbot
             if (lowerText.StartsWith("מה ") || lowerText.StartsWith("מי ") || lowerText.StartsWith("איפה ")
                 || lowerText.StartsWith("כמה ") || lowerText.StartsWith("מתי ") || lowerText.StartsWith("האם ")
                 || subLowerText.StartsWith("מה ") || subLowerText.StartsWith("מי ") || subLowerText.StartsWith("איפה ")
-                || subLowerText.StartsWith("כמה ") ||subLowerText.StartsWith("מתי ")||lowerText.EndsWith('?')) ret.IsQuestion = true;
+                || subLowerText.StartsWith("כמה ") ||subLowerText.StartsWith("מתי ")|| lowerText.StartsWith("איך ")
+                ||lowerText.EndsWith('?')) ret.IsQuestion = true;
 
             ret.Words = new List<string>(cleanText.Split(' ', StringSplitOptions.RemoveEmptyEntries));
 
@@ -75,7 +77,7 @@ namespace Chatbot
             if (context.CleanText == "qtest")
             {
                 string[] file = File.ReadAllText(
-    @"C:\Projects\gadshelly\DaviTech\Chatbot\Chatbot\Hebrew\QuestionsTest.txt").Split("\r\n");
+    @"C:\Projects\gadshelly\DaviTech\Chatbot\Chatbot\Hebrew\QuestionsTest_HEBREW.txt").Split("\r\n");
                 int length = int.Parse(file[0]);
                 QuestionTestPackage_HEBREW[] packages = new QuestionTestPackage_HEBREW[length];
 

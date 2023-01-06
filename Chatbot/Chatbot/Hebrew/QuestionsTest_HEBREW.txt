@@ -1,47 +1,47 @@
 ﻿43
-WHAT DO YOU DO
-ARE YOU MARRIED
-WHY ARE YOU STUDYING ENGLISH
-HOW DID YOU LEARN ENGLISH
-WHAT DO YOU DO IN YOUR FREE TIME
-HOW’S THE WEATHER
-WHAT TIME IS IT
-CAN I HELP YOU
-HOW’S IT GOING
-HOW ARE YOU FEELING
-HOW WAS YOUR DAY
-DID YOU LIKE THE MOVIE
-HOW WAS THE PARTY
-CAN YOU GIVE ME A HAND
-WHAT HAVE YOU BEEN UP TO LATELY
-WHAT’S THE MATTER
-WHAT WOULD YOU LIKE TO DRINK
-ARE YOU READY TO ORDER
-IS EVERYTHING OK
-CAN I GET YOU ANYTHING ELSE
-What is Your Name
-Where Are You From
-Where Do You Live
-Do You Speak English
-How Long Have You Been Studying English
-Where Did You Learn English
-Can You Play Musical Instruments
-Do You Like American Food
-How Is The American Food
-How Old Are You
-When Is Your Birthday
-Do You Have Any Brothers Or Sisters
-How Tall Are You
-Do You Have A Cellphone
-How Are You
-What Are You Doing
-What's Wrong
-What's The Weather Like
-Are You Hungry
-What Is This
-Whose Is This
-Have You Been To Los Angeles
-How Much Is This
+מה אתה עושה
+האם אתה נשוי
+למה אתה לומד אנגלית
+איך אתה לומד אנגלית
+מה אתה עושה בזמנך הפנוי
+מה מזג האוויר
+מה השעה
+האם אני יכול לעזור
+איך הולך
+איך אתה מרגיש
+איך היה היום שלך
+האם אהבת את הסרט
+איך היה במסיבה
+האם אתה יכול לתת לי יד
+מה עשית לאחרונה
+מה הבעיה
+מה תרצה לשתות
+האם אתה מוכן להזמין
+האם הכל בסדר
+האם אני יכול להביא לך עוד משהו
+איך קוראים לך
+מאיפה אתה בא
+איפה אתה גר
+האם אתה מדבר אנגלית
+כמה זמן אתה לומד אנגלית
+איפה למדת אנגלית
+האם אתה יודע לנגן על כלי נגינה
+האם אתה אוהב אוכל אמריקאי
+איך האוכל האמריקאי
+מה הגיל שלך
+מתי יום ההולדת שלך
+האם יש לך אחים או אחיות
+מה הגובה שלך
+האם יש לך טלפון
+איך אתה מרגיש
+מה אתה עושה
+מה הבעיה
+מה מזג האוויר בחוץ
+האם אתה רעב
+מה זה
+למי זה שייך
+האם היית בלוס אנג'לס
+כמה זה
 
 %%%        SYMBOL KEY
 %%% first line --------- LENGTH

@@ -1,9 +1,9 @@
 ﻿5
-Hi//hi,Hi,hi,0,0
-heLlO//hello,heLlO,hello,0,0
-whAt's yoUR nAMe?//what+s+your+name,whAt's yoUR nAMe?,what s your name,1,0
-my NAME iS Shlomo//my+name+is+shlomo,my NAME iS Shlomo,my name is shlomo,0,1
-is YouR nAMe Yosi//is+your+name+yosi,is YouR nAMe Yosi,is your name yosi,1,0
+היי//היי,היי,היי,0,0
+שלום//שלום,שלום,שלום,0,0
+איך קוראים לך?//איך+קוראים+לך,איך קוראים לך?,איך קוראים לך,1,0
+השם שלי הוא שלמה//השם+שלי+הוא+שלמה,השם שלי הוא שלמה,השם שלי הוא שלמה,0,1
+האם קוראים לך יוסי//האם+קוראים+לך+יוסי,האם קוראים לך יוסי,האם קוראים לך יוסי,1,0
 
 %%%        SYMBOL KEY
 %%% first line --------- LENGTH
