@@ -92,9 +92,9 @@ namespace Chatbot
 
             if (context.CleanText == "quit") return "quit";
 
-            if (context.IsQuestion) return "Question detected. ";
+            if (context.IsQuestion) return "שאלה זוהתה. ";
 
-            return "No question detected. ";
+            return "לא זוהתה שאלה. ";
         }
         public string Respond(string text)
         {

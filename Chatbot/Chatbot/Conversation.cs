@@ -93,6 +93,26 @@ namespace Chatbot
                 return tester.TestArr(packages);
             }
 
+            if (context.TellingName)
+            {
+                if(UserName == null)
+                {
+                    UserName = context.Words[3][0].ToString().ToUpper() + context.Words[3].Substring(0).ToLower();
+                    return $"Nice to meet you, {UserName}, my name is Megabyte.";
+                }
+                else
+                {
+                    if (context.Words[3][0].ToString().ToUpper() + context.Words[3].Substring(0).ToLower()
+                        == UserName) return "Yes, I know...";
+                    else if(!string.IsNullOrEmpty(UserName))
+                    {
+                        string ret = $"I thought your name was {UserName}, but okay.";
+                        UserName = context.Words[3][0].ToString().ToUpper() + context.Words[3].Substring(0).ToLower();
+                        return ret;
+                    }
+                }
+            }
+
             if (context.CleanText == "quit") return "quit";
 
             if (context.IsQuestion) return "Question detected. ";
