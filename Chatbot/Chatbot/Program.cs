@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 
 string userInput;
 string response;
-Conversation/*_HEBREW*/ conversation = new /*Conversation_HEBREW*/();
+Conversation/*_HEBREW*/ conversation = new Conversation/*_HEBREW*/();
 while (true)
 {
     Console.Write("You: ");

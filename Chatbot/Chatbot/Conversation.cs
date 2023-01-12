@@ -40,12 +40,47 @@ namespace Chatbot
                 || lowerText.StartsWith("who ") || lowerText.StartsWith("is ") || lowerText.StartsWith("am ")
                 || lowerText.StartsWith("are ") || lowerText.StartsWith("do ") || lowerText.StartsWith("does ")
                 || lowerText.StartsWith("did ") || lowerText.StartsWith("can ") || lowerText.StartsWith("was ")
-                || lowerText.StartsWith("were ") || lowerText.StartsWith("will ") || lowerText.StartsWith("won ")
+                || lowerText.StartsWith("where ") || lowerText.StartsWith("will ") || lowerText.StartsWith("won ")
                 || lowerText.StartsWith("whose ") || lowerText.StartsWith("had ") || lowerText.StartsWith("whose ")
                 || lowerText.StartsWith("have ") || lowerText.StartsWith("when ") || lowerText.StartsWith("how")
                 || lowerText.EndsWith('?')) ret.IsQuestion = true;
 
             ret.Words = new List<string>(cleanText.Split(' ', StringSplitOptions.RemoveEmptyEntries));
+
+            if (lowerText.StartsWith("his ") || lowerText.StartsWith("her ") || lowerText.StartsWith("their ")
+    || lowerText.StartsWith("my ") || lowerText.StartsWith("your ") || lowerText.StartsWith("our "))
+            {
+                string understandContext = lowerText;
+                if (ret.IsQuestion)
+                {
+                    understandContext = understandContext.Replace("what ", "");
+                    understandContext = understandContext.Replace("where ", "");
+                    understandContext = understandContext.Replace("why ", "");
+                    understandContext = understandContext.Replace("who ", "");
+                    understandContext = understandContext.Replace("is ", "");
+                    understandContext = understandContext.Replace("am ", "");
+                    understandContext = understandContext.Replace("are ", "");
+                    understandContext = understandContext.Replace("do ", "");
+                    understandContext = understandContext.Replace("does ", "");
+                    understandContext = understandContext.Replace("did ", "");
+                    understandContext = understandContext.Replace("can ", "");
+                    understandContext = understandContext.Replace("was ", "");
+                    understandContext = understandContext.Replace("where ", "");
+                    understandContext = understandContext.Replace("will ", "");
+                    understandContext = understandContext.Replace("when ", "");
+                    understandContext = understandContext.Replace("how ", "");
+                }
+
+                understandContext = understandContext.Replace("his ", "");
+                understandContext = understandContext.Replace("her ", "");
+                understandContext = understandContext.Replace("their ", "");
+                understandContext = understandContext.Replace("my ", "");
+                understandContext = understandContext.Replace("your ", "");
+                understandContext = understandContext.Replace("our ", "");
+
+                if (understandContext.Split("are").Length > 1) ret.TalkAbout = understandContext.Split(" are")[0];
+                else if (understandContext.Split("is").Length > 1) ret.TalkAbout = understandContext.Split(" is")[0];
+            }
 
             return ret;
         }
@@ -115,42 +150,9 @@ namespace Chatbot
 
             if (context.CleanText == "quit") return "quit";
 
-            if (context.IsQuestion) return "Question detected. ";
+            if (context.TalkAbout == "") return "Boop!";
+            return "You are talking about " +  context.TalkAbout;
 
-            return "No question detected. ";
-            //if (text.StartsWith("//")) return "Why did you write a comment?";
-            //if (text == "hi" || text == "hello") return "Hello";
-            //if (text.EndsWith("s your name") || text.EndsWith("s your name?"))
-            //{
-            //    if (!KnowsName)
-            //    {
-            //        TellingName = true;
-            //        UserKnowsName = true;
-            //        return "My name is Megabyte, what's yours?";
-            //    }
-            //    else return "My name is Megabyte.";
-            //}
-            //if(TellingName || text.StartsWith("my name is ") || text.StartsWith("my name s "))
-            //{
-            //    text = text.Replace("?", "");
-            //    text = text.Replace("my name is ", "");
-            //    text = text.Replace("my name s ", "");
-            //    text = text.Replace(",what is yours", "");
-            //    text = text.Replace(",what s yours", "");
-            //    UserName = text;
-            //    UserName.Replace(UserName[0], Char.ToUpper(UserName[0]));
-            //    if (TellingName)
-            //    {
-            //        TellingName = false;
-            //        return "Nice to meet you, " + UserName + ".";
-            //    }
-            //    else
-            //    {
-            //        UserKnowsName = true;
-            //        return "Nice to meet you, " + UserName + ", My name is Megabyte.";
-            //    }
-            //}
-            //if (text.StartsWith("thanks") || text.StartsWith("thank you")) return "Your welcome.";
         }
         public string Respond(string text)
         {
