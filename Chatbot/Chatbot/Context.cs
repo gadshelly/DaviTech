@@ -14,7 +14,8 @@ namespace Chatbot
         public string CleanText = "";
         public bool IsQuestion = false;
         public bool TellingName = false;
-        public string TalkAbout = "";
+        public string TalksAbout = "";
+        public string BelongsTo = "";
         public Context() { }
         public Context(List<string> words, string originalText, string cleanText, bool isQuestion, bool tellingName)
         {
