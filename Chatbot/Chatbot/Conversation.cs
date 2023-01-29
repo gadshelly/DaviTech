@@ -48,6 +48,7 @@ namespace Chatbot
 
             ret.Words = new List<string>(cleanText.Split(' ', StringSplitOptions.RemoveEmptyEntries));
 
+
             if (lowerText.StartsWith("his ") || lowerText.StartsWith("her ") || lowerText.StartsWith("their ")
     || lowerText.StartsWith("my ") || lowerText.StartsWith("your ") || lowerText.StartsWith("our ")
     || lowerText.Split()[1] == "his" || lowerText.Split()[1] == "her" || lowerText.Split()[1] == "their"
@@ -100,13 +101,27 @@ namespace Chatbot
                         understandContext = understandContext.Replace(understandContext.ToLower().Split(" are")[1], "");
                         understandContext = understandContext.Replace(" are", "");
                     }
+
+                }
+                else
+                {
+                    understandContext = understandContext.Replace(" is", "");
+                    understandContext = understandContext.Replace(" are", "");
+                    understandContext = understandContext.Substring(1);
                 }
 
+
                 ret.TalksAbout = understandContext.Replace(understandContext.Split()[0].ToLower().Replace(" ", ""), "");
+
                 if (understandContext.Split()[0].ToLower() != "the")
                     ret.BelongsTo = understandContext.Split()[0].ToLower();
                 else ret.BelongsTo = "no one";
 
+                if(ret.IsQuestion)
+                {
+                    understandContext = understandContext.Replace(understandContext.Split()[0], "");
+                    ret.TalksAbout = understandContext.Split()[1];
+                }
             }
 
             return ret;
@@ -178,7 +193,7 @@ namespace Chatbot
             if (context.CleanText == "quit") return "quit";
 
             if (context.TalksAbout == "") return "Boop!";
-            return "You are talking about " + context.BelongsTo + context.TalksAbout;
+            return "You are talking about " + context.BelongsTo + " " + context.TalksAbout;
 
         }
         public string Respond(string text)
