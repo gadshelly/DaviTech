@@ -48,35 +48,13 @@ namespace Chatbot
 
             ret.Words = new List<string>(cleanText.Split(' ', StringSplitOptions.RemoveEmptyEntries));
 
-
-            if (lowerText.StartsWith("his ") || lowerText.StartsWith("her ") || lowerText.StartsWith("their ")
-    || lowerText.StartsWith("my ") || lowerText.StartsWith("your ") || lowerText.StartsWith("our ")
-    || lowerText.Split()[1] == "his" || lowerText.Split()[1] == "her" || lowerText.Split()[1] == "their"
-    || lowerText.Split()[1] == "my"|| lowerText.Split()[1] == "your" || lowerText.Split()[1] == "our")
+            lowerText = lowerText + " ;";
+            if (!ret.IsQuestion && (lowerText.StartsWith("his ") || lowerText.StartsWith("her ") 
+                || lowerText.StartsWith("their ") || lowerText.StartsWith("my ") || lowerText.StartsWith("your ")
+                || lowerText.StartsWith("our "))
+    )
             {
                 string understandContext = originalText;
-                if (ret.IsQuestion)
-                {
-                    //understandContext = understandContext.Replace("what ", "");
-                    //understandContext = understandContext.Replace("where ", "");
-                    //understandContext = understandContext.Replace("why ", "");
-                    //understandContext = understandContext.Replace("who ", "");
-                    //understandContext = understandContext.Replace("is ", "");
-                    //understandContext = understandContext.Replace("am ", "");
-                    //understandContext = understandContext.Replace("are ", "");
-                    //understandContext = understandContext.Replace("do ", "");
-                    //understandContext = understandContext.Replace("does ", "");
-                    //understandContext = understandContext.Replace("did ", "");
-                    //understandContext = understandContext.Replace("can ", "");
-                    //understandContext = understandContext.Replace("was ", "");
-                    //understandContext = understandContext.Replace("where ", "");
-                    //understandContext = understandContext.Replace("will ", "");
-                    //understandContext = understandContext.Replace("when ", "");
-                    //understandContext = understandContext.Replace("how ", "");
-
-                    understandContext = understandContext.Replace(understandContext.Split()[0], "");
-
-                }
 
                 //understandContext = understandContext.Replace("his ", "");
                 //understandContext = understandContext.Replace("her ", "");
@@ -89,25 +67,15 @@ namespace Chatbot
                 //if (understandContext.Split("are").Length > 1) ret.TalkAbout = understandContext.Split(" are")[0];
                 //else if (understandContext.Split("is").Length > 1) ret.TalkAbout = understandContext.Split(" is")[0];
 
-                if (!ret.IsQuestion)
+                try
                 {
-                    try
-                    {
-                        understandContext = understandContext.Replace(understandContext.ToLower().Split(" is")[1], "");
-                        understandContext = understandContext.Replace(" is", "");
-                    }
-                    catch
-                    {
-                        understandContext = understandContext.Replace(understandContext.ToLower().Split(" are")[1], "");
-                        understandContext = understandContext.Replace(" are", "");
-                    }
-
-                }
-                else
-                {
+                    understandContext = understandContext.Replace(understandContext.ToLower().Split(" is")[1], "");
                     understandContext = understandContext.Replace(" is", "");
+                }
+                catch
+                {
+                    understandContext = understandContext.Replace(understandContext.ToLower().Split(" are")[1], "");
                     understandContext = understandContext.Replace(" are", "");
-                    understandContext = understandContext.Substring(1);
                 }
 
 
@@ -116,13 +84,32 @@ namespace Chatbot
                 if (understandContext.Split()[0].ToLower() != "the")
                     ret.BelongsTo = understandContext.Split()[0].ToLower();
                 else ret.BelongsTo = "no one";
-
-                if(ret.IsQuestion)
-                {
-                    understandContext = understandContext.Replace(understandContext.Split()[0], "");
-                    ret.TalksAbout = understandContext.Split()[1];
-                }
             }
+            lowerText = lowerText.Substring(lowerText.Length - 2);
+
+            lowerText = lowerText + " ;";
+            else if (ret.IsQuestion && (lowerText.Split()[1] == "his"
+                || lowerText.Split()[1] == "her" || lowerText.Split()[1] == "their" || lowerText.Split()[1] == "my" 
+                || lowerText.Split()[1] == "your"|| lowerText.Split()[1] == "our" || lowerText.Split()[1] == "is"))
+            {
+                string understandContext = lowerText;
+
+                understandContext = understandContext.Replace(understandContext.Split()[0], "");
+
+                understandContext = understandContext.Replace(" is", "");
+                understandContext = understandContext.Replace(" are", "");
+                understandContext = understandContext.Substring(1);
+
+                understandContext = understandContext.Replace("?", "");
+                understandContext = understandContext.Replace("!", "");
+                understandContext = understandContext.Replace(understandContext.Split()[0], "");
+                ret.TalksAbout = understandContext.Split()[1];
+
+                if (understandContext.Split()[0].ToLower() != "the")
+                    ret.BelongsTo = understandContext.Split()[0].ToLower();
+                else ret.BelongsTo = "no one";
+            }
+            lowerText = lowerText.Substring(lowerText.Length - 2);
 
             return ret;
         }
