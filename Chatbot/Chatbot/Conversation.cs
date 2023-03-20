@@ -82,7 +82,9 @@ namespace Chatbot
 				}
 
 
-				ret.TalksAbout = understandContext.Replace(understandContext.Split()[0].ToLower().Replace(" ", ""), "");
+				//ret.TalksAbout = understandContext.Replace(understandContext.Split()[0].ToLower().Replace(" ", ""), "");
+
+				ret.TalksAbout = understandContext.Split()[1];
 
 				if (understandContext.Split()[0].ToLower() != "the")
 					ret.BelongsTo = understandContext.Split()[0].ToLower();
@@ -93,21 +95,27 @@ namespace Chatbot
 				|| lowerText.Split()[1] == "your"|| lowerText.Split()[1] == "our" || lowerText.Split()[1] == "is"))
 			{
 				string understandContext = lowerText;
+                //string firstWord = lowerText.Split()[0];
 
-				understandContext = understandContext.Replace(understandContext.Split()[0], "");
+                //understandContext = understandContext.Replace(understandContext.Split()[0], "");
 
-				understandContext = understandContext.Replace(" is", "");
+                //understandContext = understandContext.Replace(firstWord, "");
+
+                //understandContext.Split()[0] = " ";
+
+                understandContext = understandContext.Substring(3);
+				if (understandContext.StartsWith(' ')) understandContext = understandContext.Substring(1);
+
+                understandContext = understandContext.Replace(" is", "");
 				understandContext = understandContext.Replace(" are", "");
-				understandContext = understandContext.Substring(1);
+				//understandContext = understandContext.Substring(1);
 
 				understandContext = understandContext.Replace("?", "");
 				understandContext = understandContext.Replace("!", "");
-				understandContext = understandContext.Replace(understandContext.Split()[0], "");
+				//understandContext = understandContext.Replace(understandContext.Split()[0], "");
+				ret.BelongsTo = understandContext.Split()[0];
+                //understandContext = understandContext.Substring(1);
 				ret.TalksAbout = understandContext.Split()[1];
-
-				if (understandContext.Split()[0].ToLower() != "the")
-					ret.BelongsTo = understandContext.Split()[0].ToLower();
-				else ret.BelongsTo = "no one";
 			}
 			lowerText = lowerText.Substring(lowerText.Length - 2);
 

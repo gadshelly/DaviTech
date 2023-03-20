@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Chatbot",
-    "\\Chatbot\\Chatbot"
+    "\\Chatbot"
   ],
-  "SelectedNode": "\\Chatbot\\Chatbot\\Program.cs",
+  "SelectedNode": "\\Chatbot\\Chatbot.sln",
   "PreviewInSolutionExplorer": false
 }
