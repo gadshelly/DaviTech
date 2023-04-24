@@ -149,7 +149,7 @@ namespace Chatbot
 				return tester.TestArr(packages);
 			}
 
-			if(context.CleanText == "qtest")
+			else if (context.CleanText == "qtest")
 			{
 				string[] file = File.ReadAllText(
 	@"C:\Projects\gadshelly\DaviTech\Chatbot\Chatbot\QuestionsTest.txt").Split("\r\n");
@@ -165,7 +165,13 @@ namespace Chatbot
 				return tester.TestArr(packages);
 			}
 
-			if (context.TellingName)
+			else if(context.CleanText == "btest")
+			{
+                string[] file = File.ReadAllText(
+@"C:\Projects\gadshelly\DaviTech\Chatbot\Chatbot\BelongingTest.txt").Split("\r\n");
+            }
+
+			else if (context.TellingName)
 			{
 				if(UserName == null)
 				{
@@ -185,11 +191,9 @@ namespace Chatbot
 				}
 			}
 
-			if (context.CleanText == "quit") return "quit";
+			else if (context.CleanText == "quit") return "quit";
 
-			if (context.TalksAbout == "") return "Boop!";
-			return "You are talking about " + context.BelongsTo + " " + context.TalksAbout;
-
+			return "Amogus";
 		}
 		public string Respond(string text)
 		{
